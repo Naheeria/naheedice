@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 Pastel Home – [당신의 이름]</title>
+    
+    <!-- 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=SUIT:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #C9A9FF;       /* 부드러운 연보라 */
+            --primary-light: #E7DAFF;
+            --primary-dark: #9A6EEB;
+            --bg: #F7F4FF;            /* 전체 배경 */
+            --card-bg: #FFFFFF;
+            --text-main: #4C3B6E;
+            --text-sub: #8A7BA5;
+            --radius: 22px;
+            --shadow: 0 8px 20px rgba(140, 105, 200, 0.15);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'SUIT', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 전체 박스 */
+        .container {
+            width: 95%;
+            max-width: 880px;
+            margin: 40px 0 60px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        /* 네비 */
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 14px;
+            gap: 10px;
+            background: var(--card-bg);
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .nav-button {
+            border: none;
+            background: var(--primary-light);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--text-sub);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .nav-button.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(150, 120, 255, 0.25);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 섹션 */
+        .content-section {
+            display: none;
+            padding: 35px 32px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 홈 헤더 */
+        header {
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.6em;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-sub);
+            margin: 0;
+            font-size: 1em;
+        }
+
+        /* 메인 이미지 */
+        .main-image-container {
+            margin-top: 28px;
+            padding: 20px;
+            background: var(--primary-light);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 10px rgba(170, 150, 255, 0.15);
+            display: flex;
+            justify-content: center;
+            min-height: 160px;
+        }
+
+        /* 섹션 타이틀 */
+        h2 {
+            font-size: 1.8em;
+            font-weight: 700;
+            text-align: center;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            width: 40px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 4px;
+            display: block;
+            margin: 10px auto 0;
+        }
+
+        /* 카드 공통 */
+        .card {
+            background: var(--primary-light);
+            padding: 20px 22px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 10px rgba(140, 105, 200, 0.1);
+            margin-bottom: 18px;
+            transition: all 0.2s;
+        }
+
+        .card:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        /* 링크 버튼 */
+        .link-item a {
+            text-decoration: none;
+            display: block;
+            padding: 14px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--text-main);
+            background: var(--primary-light);
+            border-radius: 14px;
+            transition: 0.25s;
+        }
+
+        .link-item a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* 레이아웃 */
+        .card-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .nav-button {
+                padding: 10px 14px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <button class="nav-button active" onclick="showSection('home', this)">Home</button>
+            <button class="nav-button" onclick="showSection('about', this)">About</button>
+            <button class="nav-button" onclick="showSection('projects', this)">Projects</button>
+            <button class="nav-button" onclick="showSection('links', this)">Links</button>
+        </nav>
+
+        <!-- 홈 -->
+        <div id="home" class="content-section active">
+            <header>
+                <h1>[당신의 이름]</h1>
+                <p>🌸 여기는 저만의 작은 디지털 공간입니다.</p>
+
+                <div class="main-image-container">
+                    <p style="color:#7f6ca5; font-size:0.9em;">
+                        👉 여기에 예쁜 이미지를 넣어주세요!
+                    </p>
+                </div>
+            </header>
+        </div>
+
+        <!-- 어바웃 -->
+        <div id="about" class="content-section">
+            <h2>About Me</h2>
+            <div class="card">
+                <p>[당신의 소개글이 들어갈 영역입니다.]<br>
+                관심사, 취향, 목표 등을 자유롭게 적어주세요! 💜</p>
+            </div>
+        </div>
+
+        <!-- 프로젝트 -->
+        <div id="projects" class="content-section">
+            <h2>Projects</h2>
+            <div class="card-list">
+                <div class="card">
+                    <strong>[프로젝트 제목 1]</strong><br>
+                    설명: [설명 한 줄]
+                </div>
+                <div class="card">
+                    <strong>[프로젝트 제목 2]</strong><br>
+                    설명: [설명 한 줄]
+                </div>
+                <div class="card">
+                    <strong>[학습 기록]</strong><br>
+                    [주제에 대한 학습 기록]
+                </div>
+            </div>
+        </div>
+
+        <!-- 링크 -->
+        <div id="links" class="content-section">
+            <h2>My Links</h2>
+            <div class="card-list" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="link-item"><a href="#">📝 Blog</a></div>
+                <div class="link-item"><a href="#">💻 GitHub</a></div>
+                <div class="link-item"><a href="mailto:#">✉️ Email</a></div>
+                <div class="link-item"><a href="#">🔗 SNS</a></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(id, btn) {
+            document.querySelectorAll('.content-section').forEach(s =>
+                s.classList.remove('active')
+            );
+            document.getElementById(id).classList.add('active');
+
+            document.querySelectorAll('.nav-button').forEach(b =>
+                b.classList.remove('active')
+            );
+            btn.classList.add('active');
+
+            window.scrollTo({ top: 0 });
+        }
+    </script>
+</body>
+</html>
